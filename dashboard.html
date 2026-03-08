@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Issues Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body class="bg-base-200">
+
+<!-- Navbar -->
+<div class="navbar bg-white shadow-md px-6 w-full">
+  
+  <!-- Left -->
+  <div class="flex-1">
+    <div class="flex items-center gap-3">
+      <img src="./assets/github-logo.png" class="w-10 h-10" alt="">
+      <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="flex items-center gap-3">
+    <input 
+      id="searchInput"
+      class="input input-bordered w-48 md:w-64"
+      placeholder="Search Issues"
+    >
+    <button class="btn btn-primary">+ New Issue</button>
+  </div>
+
+</div>
+
+<!-- Main Content -->
+<div class="max-w-6xl mx-auto p-10">
+  <div id="issuesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</div>
+
+<script src="./scripts/issues.js"></script>
+
+</body>
+</html>
