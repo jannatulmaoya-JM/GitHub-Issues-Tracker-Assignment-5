@@ -240,27 +240,7 @@ function searchAndOpenIssue(keyword) {
         alert("");
     }
 }
-// allBtn.addEventListener("click",()=>{
 
-//     setActiveButton(allBtn);
-
-//   displayIssues(allIssues,"all");
-// })
-// openBtn.addEventListener("click",()=>{
-
-//     setActiveButton(openBtn);
-
-//     displayIssues(allIssues,"open");
-
-// })
-
-// closedBtn.addEventListener("click",()=>{
-
-//     setActiveButton(closedBtn);
-
-//     displayIssues(allIssues,"closed");
-
-// })
 allBtn.addEventListener("click",()=>{
     setActiveButton(allBtn);
 
@@ -270,7 +250,7 @@ allBtn.addEventListener("click",()=>{
     // 5 sec por issues display
     setTimeout(()=>{
         displayIssues(allIssues,"all");
-    }, 5000);
+    }, 1000);
 })
 
 openBtn.addEventListener("click",()=>{
@@ -290,7 +270,7 @@ closedBtn.addEventListener("click",()=>{
 
     setTimeout(()=>{
         displayIssues(allIssues,"closed");
-    }, 5000);
+    }, 1000);
 })
 
 setActiveButton(allBtn);
