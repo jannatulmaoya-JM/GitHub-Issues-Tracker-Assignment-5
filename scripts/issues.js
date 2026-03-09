@@ -220,7 +220,7 @@ const displayIssues = (issues, statusFilter="all") => {
     issueCount.textContent=`${visibleCount} Issues`;
 
 }
-
+//  function search
 function searchAndOpenIssue(keyword) {
     const issue = allIssues.find(issue =>
         issue.title.toLowerCase().includes(keyword.toLowerCase())
@@ -240,28 +240,58 @@ function searchAndOpenIssue(keyword) {
         alert("");
     }
 }
-allBtn.addEventListener("click",()=>{
+// allBtn.addEventListener("click",()=>{
 
+//     setActiveButton(allBtn);
+
+//   displayIssues(allIssues,"all");
+// })
+// openBtn.addEventListener("click",()=>{
+
+//     setActiveButton(openBtn);
+
+//     displayIssues(allIssues,"open");
+
+// })
+
+// closedBtn.addEventListener("click",()=>{
+
+//     setActiveButton(closedBtn);
+
+//     displayIssues(allIssues,"closed");
+
+// })
+allBtn.addEventListener("click",()=>{
     setActiveButton(allBtn);
 
-  displayIssues(allIssues,"all");
-})
-openBtn.addEventListener("click",()=>{
+    // Loading dekhao
+    container.innerHTML = `<div class="col-span-full text-center text-gray-500 text-lg py-20">Loading...</div>`;
 
+    // 5 sec por issues display
+    setTimeout(()=>{
+        displayIssues(allIssues,"all");
+    }, 5000);
+})
+
+openBtn.addEventListener("click",()=>{
     setActiveButton(openBtn);
 
-    displayIssues(allIssues,"open");
+    container.innerHTML = `<div class="col-span-full text-center text-gray-500 text-lg py-20">Loading...</div>`;
 
+    setTimeout(()=>{
+        displayIssues(allIssues,"open");
+    }, 1000);
 })
 
 closedBtn.addEventListener("click",()=>{
-
     setActiveButton(closedBtn);
 
-    displayIssues(allIssues,"closed");
+    container.innerHTML = `<div class="col-span-full text-center text-gray-500 text-lg py-20">Loading...</div>`;
 
+    setTimeout(()=>{
+        displayIssues(allIssues,"closed");
+    }, 5000);
 })
-
 
 setActiveButton(allBtn);
 
