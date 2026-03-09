@@ -1,6 +1,6 @@
 1️⃣ What is the difference between var, let, and const?
 
->>> var ekta old style variable. Eta function er moddhe thakle oi function er bahire kaj kore na.
+>>>  var ekta old style variable. Eta function er moddhe thakle oi function er bahire kaj kore na.  
 let ekdom new style, eta block scope follow kore. Mane { } er moddhe thakle bahire kaj kore na.
 const o block scope, kintu ekbar value assign korle change kora jabe na. Constant rakhar jonno use hoy.
 
