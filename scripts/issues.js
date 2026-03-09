@@ -101,8 +101,6 @@ const displayIssues = (issues, statusFilter="all") => {
         else if(issue.status.toLowerCase()==="closed"){
             borderColor+="border-purple-500";
         }
-
-
         let badgeColor="";
 
         const priority = issue.priority.toUpperCase();
@@ -118,8 +116,6 @@ const displayIssues = (issues, statusFilter="all") => {
         else if(priority==="LOW"){
             badgeColor="bg-gray-200 text-gray-700";
         }
-
-
         let labelsHTML="";
 
         if(issue.labels && issue.labels.length>0){
@@ -153,8 +149,6 @@ const displayIssues = (issues, statusFilter="all") => {
             })
 
         }
-
-
         let statusIcon = issue.status.toLowerCase()==="closed"
         ? "./assets/Closed- Status .png"
         : "./assets/Open-Status.png";

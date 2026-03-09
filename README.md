@@ -45,7 +45,7 @@ They also handle this differently compared to normal functions.
 >>> Template literals are a way to write strings easily, especially when you need variables inside strings.
 They use backticks (`) instead of quotes.
 
-let name = "Rahim";
+let name = "Mimi";
 console.log(`My name is ${name}`);
 
 You can also create multi-line strings without using \n.
