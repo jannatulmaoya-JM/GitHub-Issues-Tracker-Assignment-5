@@ -31,7 +31,6 @@
                 <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
             </div>
         </div>
-
         <!-- Right -->
         <div class="flex items-center gap-3">
             <input id="searchInput" class="input input-bordered w-48 md:w-64" placeholder="Search Issues">
@@ -39,13 +38,9 @@
         </div>
 
     </div>
-
-
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto p-10 ">
         <!-- First Navbar -->
-
-
         <div class="navbar bg-base-100 shadow-sm rounded-lg gap-3 mb-6 p-5">
             <button id="allBtn" class="btn btn-outline border-gray-400 text-black w-20 h-7">All</button>
             <button id="openBtn" class="btn btn-outline border-gray-400 text-black w-20 h-7">Open</button>
@@ -79,8 +74,59 @@
 
     </div>
 
+    <!-- Modal -->
 
-    
+    <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+        <div class="bg-white rounded-lg w-[500px] p-6">
+
+            <h2 id="modalTitle" class="text-xl font-bold mb-3"></h2>
+
+            <p id="modalDescription" class="text-gray-600 mb-6"></p>
+
+            <button onclick="closeModal()" class="btn btn-primary">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+<div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+  <div class="bg-white rounded-lg w-[550px] p-6">
+
+      <!-- Title -->
+      <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+
+      <!-- status + priority -->
+      <div class="flex items-center gap-3 mb-3">
+          <span id="modalStatus"></span>
+          <span id="modalPriority"></span>
+      </div>
+
+      <!-- description -->
+      <p id="modalDescription" class="text-gray-600 mb-4"></p>
+
+      <!-- labels -->
+      <div id="modalLabels" class="flex flex-wrap gap-2 mb-4"></div>
+
+      <!-- footer -->
+      <div class="border-t pt-3 text-sm text-gray-500 flex justify-between mb-4">
+          <span id="modalAuthor"></span>
+          <span id="modalDate"></span>
+      </div>
+
+      <!-- Close button bottom-right -->
+      <div class="flex justify-end">
+          <button onclick="closeModal()" class="btn btn-primary">
+              Close
+          </button>
+      </div>
+
+  </div>
+
+</div>
+
     <script src="./scripts/issues.js"></script>
 
 </body>
