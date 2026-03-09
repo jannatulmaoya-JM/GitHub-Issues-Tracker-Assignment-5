@@ -1,3 +1,8 @@
+
+const searchInput = document.getElementById("searchInput");
+const newIssueBtn = document.getElementById("newIssueBtn");
+
+
 const container = document.getElementById("issuesContainer");
 const issueCount = document.getElementById("issueCount");
 
@@ -7,12 +12,17 @@ const closedBtn = document.getElementById("closedBtn");
 
 let allIssues = [];
 
-function openModal(title, description){
+function openModal(title, description, Status, Priority, Labels, Author, Date  ){
 
     const modal = document.getElementById("modal");
 
     document.getElementById("modalTitle").textContent = title;
     document.getElementById("modalDescription").textContent = description;
+    document.getElementById("modalStatus").textContent = Status;
+    document.getElementById("modalPriority").textContent = Priority;
+    document.getElementById("modalLabels").textContent =  Labels;
+    document.getElementById("modalAuthor").textContent = Author;
+    document.getElementById("modalDate").textContent = Date;
 
     modal.classList.remove("hidden");
     modal.classList.add("flex");
@@ -77,14 +87,15 @@ const displayIssues = (issues, statusFilter="all") => {
 
     issues.forEach(issue => {
 
-        if(statusFilter !== "all" && issue.status.toLowerCase() !== statusFilter) return;
+        if(statusFilter !== "all" && issue.status.toLowerCase() !== statusFilter) 
+            return;
 
         visibleCount++;
 
         let borderColor="border-t-4 ";
 
         if(issue.status.toLowerCase()==="open"){
-            borderColor+="border-green-500";
+            borderColor+="border-green-600";
         }
 
         else if(issue.status.toLowerCase()==="closed"){
@@ -101,7 +112,7 @@ const displayIssues = (issues, statusFilter="all") => {
         }
 
         else if(priority==="MEDIUM"){
-            badgeColor="bg-yellow-100 text-yellow-600";
+            badgeColor="bg-yellow-300 text-yellow-900";
         }
 
         else if(priority==="LOW"){
@@ -118,19 +129,19 @@ const displayIssues = (issues, statusFilter="all") => {
                 let labelColor="bg-gray-200 text-gray-700";
 
                 if(label.toLowerCase()==="bug"){
-                    labelColor="bg-red-100 text-red-600";
+                    labelColor="bg-red-200 text-red-600";
                 }
 
                 if(label.toLowerCase()==="help wanted"){
-                    labelColor="bg-yellow-100 text-yellow-700";
+                    labelColor="bg-yellow-300 text-yellow-700";
                 }
 
                 if(label.toLowerCase()==="enhancement"){
-                    labelColor="bg-green-100 text-green-700";
+                    labelColor="bg-green-200 text-green-700";
                 }
 
                 if(label.toLowerCase()==="documentation"){
-                    labelColor="bg-yellow-100 text-yellow-700";
+                    labelColor="bg-yellow-300 text-yellow-900";
                 }
 
                 labelsHTML+=`
@@ -189,7 +200,15 @@ const displayIssues = (issues, statusFilter="all") => {
 
         div.addEventListener("click",()=>{
 
-            openModal(issue.title, issue.description);
+           openModal(
+                 issue.title,
+                 issue.description,
+                 issue.status,
+                 issue.priority,
+                 issue.labels,
+                 issue.author,
+                 issue.createdAt
+                );
 
         })
 
@@ -200,6 +219,26 @@ const displayIssues = (issues, statusFilter="all") => {
 
     issueCount.textContent=`${visibleCount} Issues`;
 
+}
+
+function searchAndOpenIssue(keyword) {
+    const issue = allIssues.find(issue =>
+        issue.title.toLowerCase().includes(keyword.toLowerCase())
+    );
+
+    if(issue){
+        openModal(
+            issue.title,
+            issue.description,
+            issue.status,
+            issue.priority,
+            issue.labels,
+            issue.author,
+            issue.createdAt
+        );
+    } else {
+        alert("");
+    }
 }
 allBtn.addEventListener("click",()=>{
 
@@ -227,3 +266,19 @@ closedBtn.addEventListener("click",()=>{
 setActiveButton(allBtn);
 
 loadIssues();
+
+
+newIssueBtn.addEventListener("click", () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    if(keyword === "") {
+     
+        displayIssues(allIssues, "all");
+    } else {
+    
+        const filteredIssues = allIssues.filter(issue =>
+            issue.title.toLowerCase().includes(keyword)
+        );
+        displayIssues(filteredIssues, "all");
+    }
+});
